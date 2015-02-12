@@ -1,0 +1,27 @@
+<script>
+var Fighter = function() {
+	this.health=rollDice()*10;
+	this.luck=rollDice();
+	this.weapon=rollDice();
+}
+
+function rollDice() {
+	return Math.floor((Math.random()*10)+1);
+}
+
+var fighterOne = new Fighter();
+var fighterTwo = new Fighter();
+
+while (fighterOne.health && fighterTwo.health > 0) {
+	if (fighterOne.luck>rollDice()) {
+		fighterTwo.health -= (rollDice()+fighterOne.weapon);
+	} 
+	if (fighterTwo.luck>rollDice()) {
+		fighterOne.health -= (rollDice()+fighterTwo.weapon);
+	}
+}
+
+console.log(fighterOne.health);
+console.log(fighterTwo.health);
+
+</script>
